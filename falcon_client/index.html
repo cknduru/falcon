@@ -17,6 +17,7 @@
 	  	const myJson = await response.json(); //extract JSON from the http response
 	  	var btn=document.createElement("button");
 
+	  	// create popover
 	  	btn.innerHTML = `${myJson.device_name}@${myJson.location}`;
 	  	btn.type = "button";
 	  	btn.className = "btn btn-lg btn-danger";
@@ -33,9 +34,15 @@
 		});
 
   	}
+
+	function fillIPField()
+	{
+		document.getElementById("serverField").value = '192.168.87.189:5000';
+	}
+
 </script>
 
-<body>
+<body onLoad="fillIPField()">
     <center>
     	<div style="width: 70%;">
           <h1>FCON v. 1</h1>
@@ -43,7 +50,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Server ip</span>
             </div>
-            <input type="text" id="myField" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-sm"></input>
+            <input type="text" id="serverField" class="form-inline" aria-label="Default" aria-describedby="inputGroup-sizing-sm" maxlength="13" size="13"></input>
             <button type="button" class="btn btn-primary" onClick="getDevices()">Connect</button>
           </div>
 
@@ -61,3 +68,4 @@ $(document).ready(function(){
 </script>
 </body>
 </head>
+
