@@ -1,0 +1,64 @@
+<head>
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+	const getDevices = async () => 
+	{
+	  	const response = await fetch('http://192.168.87.189:5000');
+	  	const myJson = await response.json(); //extract JSON from the http response
+	  	var btn=document.createElement("button");
+
+	  	btn.innerHTML = `${myJson.device_name}@${myJson.location}`;
+	  	btn.type = "button";
+	  	btn.className = "btn btn-lg btn-danger";
+	  	btn.id="pi1";
+	  	var hover_container = document.getElementById("btnH");
+	  	hover_container.appendChild(btn);
+
+		jQuery("#pi1")
+		 .popover({
+		   trigger: 'click',
+		   title: '',
+		   content: 'Turn on relay',
+		   placement: 'right'
+		});
+
+  	}
+</script>
+
+<body>
+    <center>
+    	<div style="width: 70%;">
+          <h1>FCON v. 1</h1>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Server ip</span>
+            </div>
+            <input type="text" id="myField" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-sm"></input>
+            <button type="button" class="btn btn-primary" onClick="getDevices()">Connect</button>
+          </div>
+
+          <div id="btnH">
+          </div>
+
+        </div>
+    </center>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+
+</script>
+</body>
+</head>
