@@ -20,7 +20,7 @@
 	  	// create popover
 	  	btn.innerHTML = `${myJson.device_name}@${myJson.location}`;
 	  	btn.type = "button";
-	  	btn.className = "btn btn-lg btn-danger";
+	  	btn.className = "btn btn-primary btn-sm";
 	  	btn.id="pi1";
 	  	var hover_container = document.getElementById("btnH");
 	  	hover_container.appendChild(btn);
@@ -51,7 +51,7 @@
               <span class="input-group-text" id="inputGroup-sizing-sm">Server ip</span>
             </div>
             <input type="text" id="serverField" class="form-inline" aria-label="Default" aria-describedby="inputGroup-sizing-sm" maxlength="13" size="13"></input>
-            <button type="button" class="btn btn-primary" onClick="getDevices()">Connect</button>
+            <button type="button" class="btn btn-danger btn-sm" onClick="getDevices()">Connect</button>
           </div>
 
           <div id="btnH">
