@@ -1,4 +1,11 @@
-. page_container
+#page_container
 {
 	width: 70%;
+}
+
+#spacer
+{
+    font-size: 0; 
+    height: 40px;
+    line-height: 0;
 }
