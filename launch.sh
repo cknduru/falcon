@@ -10,4 +10,7 @@ pushd .
 cd $FOLDER_CLIENT
 screen -dmS flask_client sudo python3 -m http.server 8080
 popd
+source ~/.bashrc
+
+sleep 2
 screen -ls

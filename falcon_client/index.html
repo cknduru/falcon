@@ -9,20 +9,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="utils.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
 
 <body onLoad="fillIPField()">
     <center>
-    	<div style="width: 70%;">
+    	<div id="page_container">
           <h1>FCON v. 1</h1>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Server ip</span>
             </div>
-            <input type="text" id="serverField" class="form-inline" aria-label="Default" aria-describedby="inputGroup-sizing-sm" maxlength="13" size="13"></input>
+            <input type="text" id="serverField" class="form-inline" aria-label="Default" aria-describedby="inputGroup-sizing-sm" maxlength="14" size="14"></input>
             <button type="button" class="btn btn-danger btn-sm" onClick="getDevices()">Connect</button>
           </div>
 
-          <div id="btnH">
+          <div id="node_popover">
           </div>
 
         </div>
