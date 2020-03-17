@@ -3,37 +3,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="utils.js"></script>
-<link rel="stylesheet" type="text/css" href="/stylesheet.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Falcon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="utils.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheet.css">
 
-<body onLoad="fillIPField()">
-    <center>
-    	<div id="page_container">
-          <h1>FCON v. 1</h1>
-          <div class="input-group mb-3">
+  <body onLoad="fillIPField()">
+      <div id="spacer"></div>
+
+      <div>
+        <div class="col-12">
+          <div class="input-group w-25 mx-auto">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Server ip</span>
             </div>
             <input type="text" id="serverField" class="form-inline" aria-label="Default" aria-describedby="inputGroup-sizing-sm" maxlength="16" size="16"></input>
-            <button type="button" class="btn btn-danger btn-sm" onClick="getDevices()">Connect</button>
+            <button type="button" class="btn btn-danger btn-sm" id="btnConnectServer" onClick="getDevices()">Connect</button>
           </div>
-
-          <div id="spacer"></div>
-          <div id="node_popover"></div>
         </div>
-    </center>
 
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();   
-});
+        <div id="spacer"></div>
 
-</script>
-</body>
+        <div class="col-12">
+          <div class="input-group w-25 mx-auto">
+            <div class="dropdown btn-group">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onClick="playMusic()" href="#">Play music</a>
+                <a class="dropdown-item" onClick="toggleLights('door')" href="#">Toggle door lights</a>
+                <a class="dropdown-item" onClick="toggleLights('footwell')" href="#">Toogle footwell lights</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
 </head>
 
