@@ -8,7 +8,9 @@ function sendCommand(cmd)
 	$.ajax({
 	  type: "POST",
 	  url: getServerIp(),
-	  data: {cmd : 'testcmd'},
+	  data: JSON.stringify({command : cmd}),
+	  contentType: 'application/json',
+	  success: function (response_data) { console.log(`sent message to server: ${cmd}`); }  
 	});
 }
 
@@ -29,8 +31,7 @@ function toggleVisibility(component, show)
 
 function playMusic()
 {
-	sendCommand('bah');
-	console.log("play music");
+	sendCommand('playMusic');
 }
 
 function toggleLights(placement)
