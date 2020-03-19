@@ -8,7 +8,7 @@ def run_sys_cmd(cmd):
 @app.route('/', methods=['GET', 'POST'])
 def node_info():
 	if request.method == 'GET':
-		welcome_message = 'Falcon is up and running'
+		welcome_message = 'You are now connected to Falcon'
 		subprocess.Popen(['bash', 'app/speak.sh', welcome_message])
 		return jsonify(device_name='pi', location='center console')
 	elif request.method == 'POST':
