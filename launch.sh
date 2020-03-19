@@ -1,3 +1,7 @@
+if [[ "$1" == '-k' ]]; then
+    pkill screen
+fi
+
 FOLDER_SERVER='falcon_server'
 FOLDER_CLIENT='falcon_client'
 
