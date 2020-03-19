@@ -12,6 +12,16 @@ function sendCommand(cmd)
 	});
 }
 
+const fetchData = async () => 
+{
+	let myJson;
+  	const response = await fetch(getServerIp())
+  						   .then(response => response.json())
+  						   .then(response => CallbackdisplayDevices(response));
+
+  	return myJson;
+}
+
 function toggleVisibility(component, show)
 {
 	document.getElementById(component).style.display = show;
@@ -28,17 +38,20 @@ function toggleLights(placement)
 	alert(`toggling lights at ${placement}`);
 }
 
-const displayDevices = async () => 
+function displayDevices()
 {
-  	const response = await fetch(getServerIp());
-  	const myJson = await response.json(); // extract JSON from the http response
+	fetchData();
+}
 
+function CallbackdisplayDevices(node)
+{
+	// disable connect button to prevent multiple presses
   	document.getElementById("btnConnectServer").disabled = true;
   	
   	// display drop down
   	var btn = document.getElementById("dropdownMenuButton");
   	toggleVisibility("dropdownMenuButton", "block");
-  	btn.innerHTML = `${myJson.device_name}@${myJson.location}`;
+  	btn.innerHTML = `${node.device_name}@${node.location}`;
 }
 
 function fillIPField()
