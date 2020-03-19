@@ -8,7 +8,7 @@ screen -dmS flask_server flask run --host=0.0.0.0
 popd > /dev/null
 pushd . > /dev/null
 cd $FOLDER_CLIENT
-screen -dmS flask_client sudo python3 -m http.server 8080
+screen -dmS falcon_client sudo python3 -m http.server 8080
 popd > /dev/null
 source ~/.bashrc
 

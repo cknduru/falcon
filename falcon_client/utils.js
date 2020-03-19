@@ -30,12 +30,12 @@ function toggleVisibility(component, show)
 function playMusic()
 {
 	sendCommand('bah');
-	alert("play music");
+	console.log("play music");
 }
 
 function toggleLights(placement)
 {
-	alert(`toggling lights at ${placement}`);
+	console.log(`toggling lights at ${placement}`);
 }
 
 function displayDevices()
