@@ -24,7 +24,7 @@ def node_info():
 
 		if cmd == 'playMusic':
 			run_sys_cmd('omxplayer app/song.mp3')
-		elif cmd == 'toggleLights':
+		elif 'toggleLights' in cmd:
 			placement = cmd.split(' ')[1]
 			print('toggling lights at {}'.format(placement))
 
