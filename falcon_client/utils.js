@@ -10,7 +10,7 @@ function sendCommand(cmd)
 	  url: getServerIp(),
 	  data: JSON.stringify({command : cmd}),
 	  contentType: 'application/json',
-	  success: function (response_data) { console.log(`sent message to server: ${cmd}`); }  
+	  success: function (response_data) { console.log(`${cmd} -> server`); }  
 	});
 }
 
@@ -36,7 +36,7 @@ function playMusic()
 
 function toggleLights(placement)
 {
-	console.log(`toggling lights at ${placement}`);
+	sendCommand(`toggleLights ${placement}`);
 }
 
 function displayDevices()
