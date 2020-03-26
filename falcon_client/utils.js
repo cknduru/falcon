@@ -14,7 +14,7 @@ function sendCommand(cmd)
 	});
 }
 
-const fetchData = async () => 
+const fetchData = async (ip) => 
 {
 	let myJson;
   	const response = await fetch(getServerIp())
@@ -41,7 +41,9 @@ function toggleLights(placement)
 
 function displayDevices()
 {
-	fetchData();
+	// get ip from form
+	let serverIp = document.getElementById("serverField").value;
+	fetchData(serverIp);
 }
 
 function CallbackdisplayDevices(node)
