@@ -34,8 +34,6 @@ def toggle_relay(placement):
 		gpio_pin = relay_container[0]
 		relay_container[1].toggle()
 		
-
-		
 		print('switched relay chan {} on @ {}'.format(gpio_pin, placement))
 	else:
 		return

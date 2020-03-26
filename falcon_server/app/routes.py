@@ -27,7 +27,7 @@ def node_info():
 			run_sys_cmd('omxplayer app/song.mp3')
 		elif 'toggleLights' in cmd:
 			placement = cmd.split(' ')[1]
-			ru.toggle_relay('footwell')
+			ru.toggle_relay(placement)
 		data = {'message': 'Created', 'code': 'SUCCESS'}
 		return make_response(jsonify(data), 200)
 	else:
