@@ -1,6 +1,7 @@
 from app import app
 from flask import jsonify, request, make_response
 import subprocess
+import app.relay_util as ru
 
 # todo: suppress output from Popen
 # disable cross use of audio between threads with bool or lock file
@@ -26,8 +27,7 @@ def node_info():
 			run_sys_cmd('omxplayer app/song.mp3')
 		elif 'toggleLights' in cmd:
 			placement = cmd.split(' ')[1]
-			print('toggling lights at {}'.format(placement))
-
+			ru.toggle_relay('footwell')
 		data = {'message': 'Created', 'code': 'SUCCESS'}
 		return make_response(jsonify(data), 200)
 	else:
