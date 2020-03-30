@@ -18,7 +18,7 @@ def setup_relay_data():
 	# initialise placements
 	for placement in placements:
 		gpio_pin = placements[placement][0]
-		placements[placement] = (gpio_pin, gp.OutputDevice(gpio_pin, active_high=False, initial_value=False))
+		placements[placement] = (gpio_pin, gp.OutputDevice(gpio_pin, active_high, initial_value=False))
 
 	initialised = True
 
