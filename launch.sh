@@ -1,10 +1,20 @@
 if [[ "$1" == '-i' ]]; then
-    echo 'if [ -z "$STY" ]; then cd '"$(pwd)"'&&./launch.sh -k; fi' >> ~/.bashrc
+    echo 'if [ -z "$STY" ]; then cd '"$(pwd)"'&&./launch.sh; fi' >> ~/.bashrc
     echo 'installed start hook to .bashrc'
     return 0
 fi
 
-pkill screen
+# pull updates and start new instance if updates are available
+git_status=$(git pull)
+
+if [[ "$git_status" != "Already up-to-date." ]]; then
+    echo 'installing updates'
+
+    # exec creates new process instance and exits this one
+    exec launch.sh
+fi
+
+pkill screen > /dev/null
 
 FOLDER_SERVER='falcon_server'
 FOLDER_CLIENT='falcon_client'
@@ -18,7 +28,9 @@ pushd . > /dev/null
 cd $FOLDER_CLIENT
 screen -dmS falcon_client sudo python3 -m http.server 8080
 popd > /dev/null
-source ~/.bashrc
+
+# restore original env
+deactivate
 
 sleep 2
 screen -ls
