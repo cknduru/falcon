@@ -8,12 +8,11 @@ fi
 git_status=$(git pull)
 
 if [[ "$git_status" != "Already up-to-date." ]]; then
-    echo 'installing updates'
-
     # exec creates new process instance and exits this one
     exec launch.sh
 fi
 
+# kill any old instance of Falcon
 pkill screen > /dev/null
 
 FOLDER_SERVER='falcon_server'
@@ -27,10 +26,11 @@ popd > /dev/null
 pushd . > /dev/null
 cd $FOLDER_CLIENT
 screen -dmS falcon_client sudo python3 -m http.server 8080
-popd > /dev/null
 
 # restore original env
 deactivate
+
+popd > /dev/null
 
 sleep 2
 screen -ls

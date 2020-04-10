@@ -28,6 +28,8 @@ def node_info():
 		elif 'toggleLights' in cmd:
 			placement = cmd.split(' ')[1]
 			ru.toggle_relay(placement)
+		elif 'shutdown' in cmd:
+			run_sys_cmd('sudo shutdown -h now')
 		data = {'message': 'Created', 'code': 'SUCCESS'}
 		return make_response(jsonify(data), 200)
 	else:

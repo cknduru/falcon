@@ -16,12 +16,10 @@ function sendCommand(cmd)
 
 const fetchData = async (ip) => 
 {
-	let myJson;
   	const response = await fetch(getServerIp())
   						   .then(response => response.json())
   						   .then(response => CallbackdisplayDevices(response));
 
-  	return myJson;
 }
 
 function toggleVisibility(component, show)
@@ -39,6 +37,19 @@ function toggleLights(placement)
 	sendCommand(`toggleLights ${placement}`);
 }
 
+function shutdownDevice(device)
+{
+	// todo: send command is currently hardcoded to only send to one device
+	// this should be expanded
+    if (device == 'deviceDropdownMenu1')
+    {
+    	sendCommand('shutdown')
+    	return;
+    }
+
+    console.log(`Unknown shutdown device: ${device}`)
+}
+
 function displayDevices()
 {
 	// get ip from form
@@ -52,13 +63,13 @@ function CallbackdisplayDevices(node)
   	document.getElementById("btnConnectServer").disabled = true;
   	
   	// display drop down
-  	var btn = document.getElementById("dropdownMenuButton");
-  	toggleVisibility("dropdownMenuButton", "block");
+  	var btn = document.getElementById("deviceDropdownMenu1");
+  	toggleVisibility("deviceDropdownMenu1", "block");
   	btn.innerHTML = `${node.device_name}@${node.location}`;
 }
 
 function fillIPField()
 {
 	document.getElementById("serverField").value = getServerIp();
-	toggleVisibility("dropdownMenuButton", "none");
+	toggleVisibility("deviceDropdownMenu1", "none");
 }

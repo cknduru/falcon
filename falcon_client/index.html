@@ -32,13 +32,14 @@
 
       <div style="display:flex;justify-content:center;align-items:center;">
         <div class="dropdown btn-group">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="deviceDropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown button
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu" aria-labelledby="deviceDropdownMenu1">
             <a class="dropdown-item" onClick="playMusic()" href="#">Play music</a>
             <a class="dropdown-item" onClick="toggleLights('door')" href="#">Toggle door lights</a>
             <a class="dropdown-item" onClick="toggleLights('footwell')" href="#">Toogle footwell lights</a>
+            <a class="dropdown-item" onClick="shutdownDevice('deviceDropdownMenu1')" href="#">Shut down</a>
           </div>
         </div>
       </div>
