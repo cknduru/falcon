@@ -1,6 +1,10 @@
-if [[ "$1" == '-k' ]]; then
-    pkill screen
+if [[ "$1" == '-i' ]]; then
+    echo 'if [ -z "$STY" ]; then cd '"$(pwd)"'&&./launch.sh -k; fi' >> ~/.bashrc
+    echo 'installed start hook to .bashrc'
+    return 0
 fi
+
+pkill screen
 
 FOLDER_SERVER='falcon_server'
 FOLDER_CLIENT='falcon_client'
