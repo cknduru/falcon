@@ -3,7 +3,6 @@
 if [[ "$1" == '-i' ]]; then
     (crontab -l 2>/dev/null; echo "@reboot cd /home/pi/falcon&&./launch.sh") | crontab -
     echo 'installed start hook to user crontab'
-    return 0
 fi
 
 # pull updates
