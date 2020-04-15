@@ -1,22 +1,24 @@
+#!/bin/bash
+
 if [[ "$1" == '-i' ]]; then
-    echo 'if [ -z "$STY" ]; then cd '"$(pwd)"'&&./launch.sh; fi' >> ~/.bashrc
-    echo 'installed start hook to .bashrc'
+    (crontab -l 2>/dev/null; echo "@reboot cd /home/pi/falcon&&./launch.sh") | crontab -
+    echo 'installed start hook to user crontab'
     return 0
 fi
 
-# pull updates and start new instance if updates are available
+# pull updates
 git_status=$(git pull)
 
 if [[ "$git_status" != "Already up-to-date." ]]; then
-    # exec creates new process instance and exits this one
-    exec launch.sh
+    echo 'Updated Falcon'
 fi
 
 # kill any old instance of Falcon
 pkill screen > /dev/null
 
-FOLDER_SERVER='falcon_server'
-FOLDER_CLIENT='falcon_client'
+ROOT_FOLDER="$(pwd)"
+FOLDER_SERVER="$ROOT_FOLDER/falcon_server"
+FOLDER_CLIENT="$ROOT_FOLDER/falcon_client"
 
 pushd . > /dev/null
 cd $FOLDER_SERVER
