@@ -15,12 +15,17 @@ def setup_relay_data():
 	# placements = {"door" : (3, None)}
 	placements = {"footwell" : (2, None)}
 
+	# this has to be done here because of the toggle_relay once issue
+	initialised = True
+
 	# initialise placements
 	for placement in placements:
 		gpio_pin = placements[placement][0]
 		placements[placement] = (gpio_pin, gp.OutputDevice(gpio_pin, active_high=True, initial_value=False))
 
-	initialised = True
+		# for some reason relay needs to be toggled once before it works
+		toggle_relay(placement)
+
 
 def is_valid_placement(placement):
 	try:
